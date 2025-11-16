@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Court Management System - Justice WebApp</title>
+    <base href="/" id="dynamic-base">
+    <script>
+        // Dynamically set base path for GitHub Pages deployment
+        (function () {
+            var base = document.getElementById('dynamic-base');
+            var path = window.location.pathname.includes('/CourtWebApp')
+                ? '/CourtWebApp/'
+                : '/';
+            base.setAttribute('href', path);
+        })();
+    </script>
+
+    <!-- Radzen Blazor Theme -->
+    <link rel="stylesheet" href="_content/Radzen.Blazor/css/material-base.css">
+    <link rel="stylesheet" href="_content/Radzen.Blazor/css/standard-base.css">
+
+    <!-- Google Material Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/accessibility.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="CompanyApp.Clients.CourtWebApp.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Skip to main content link -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <div id="app" role="application">
+        <svg class="loading-progress" aria-label="Loading">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text" role="status" aria-live="polite"></div>
+    </div>
+
+    <div id="blazor-error-ui" role="alert" aria-live="assertive">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+
+    <!-- ARIA Live Regions -->
+    <div id="aria-announcer-polite" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+    <div id="aria-announcer-assertive" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
+
+    <script src="_content/Radzen.Blazor/Radzen.Blazor.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        // If redirected from 404.html, restore path
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const path = params.get('path');
+            if (path) {
+                window.history.replaceState(null, '', '/CourtWebApp' + decodeURIComponent(path));
+            }
+        })();
+    </script>
+</body>
+
+</html>
