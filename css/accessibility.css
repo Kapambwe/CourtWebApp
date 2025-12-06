@@ -1,0 +1,247 @@
+/* Accessibility Styles */
+
+/* Skip Links */
+.skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--rz-primary);
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    z-index: 10000;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Enhanced Focus Indicators */
+.enhanced-focus *:focus,
+.enhanced-focus *:focus-visible {
+    outline: 3px solid var(--rz-primary) !important;
+    outline-offset: 2px !important;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.25) !important;
+}
+
+/* High Contrast Mode */
+.high-contrast {
+    filter: contrast(1.5);
+}
+
+.high-contrast * {
+    border-color: #000 !important;
+}
+
+.high-contrast a {
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+/* Color Blindness Filters */
+.protanopia {
+    filter: url('#protanopia-filter');
+}
+
+.deuteranopia {
+    filter: url('#deuteranopia-filter');
+}
+
+.tritanopia {
+    filter: url('#tritanopia-filter');
+}
+
+.achromatopsia {
+    filter: grayscale(100%);
+}
+
+/* Dyslexia-Friendly Font */
+.dyslexia-font,
+.dyslexia-font * {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', Arial, sans-serif !important;
+    letter-spacing: 0.05em;
+    word-spacing: 0.16em;
+}
+
+/* Motion Reduction */
+.reduce-motion,
+.reduce-motion * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+.no-animations,
+.no-animations * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Screen Reader Only Text */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.sr-only-focusable:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+}
+
+/* ARIA Live Regions */
+.aria-live-polite {
+    position: absolute;
+    left: -10000px;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+}
+
+/* Keyboard Navigation Indicators */
+.keyboard-navigable:focus-within {
+    box-shadow: 0 0 0 3px var(--rz-primary-lighter);
+}
+
+/* Large Touch Targets (minimum 44x44px) */
+.touch-target {
+    min-width: 44px;
+    min-height: 44px;
+}
+
+/* Ensure sufficient color contrast */
+.contrast-text {
+    color: #000;
+    background-color: #fff;
+}
+
+.contrast-text-inverse {
+    color: #fff;
+    background-color: #000;
+}
+
+/* Focus visible polyfill for older browsers */
+.js-focus-visible :focus:not(.focus-visible) {
+    outline: none;
+}
+
+.js-focus-visible .focus-visible {
+    outline: 2px solid var(--rz-primary);
+    outline-offset: 2px;
+}
+
+/* Increased line height for readability */
+:root {
+    --line-spacing: 1.5;
+}
+
+body {
+    line-height: var(--line-spacing);
+}
+
+/* Simplified Interface Mode */
+.simplified-interface .rz-card {
+    box-shadow: none !important;
+    border: 2px solid var(--rz-border-color);
+}
+
+.simplified-interface .gradient-bg {
+    background: var(--rz-base-100) !important;
+}
+
+/* Loading indicator for screen readers */
+.loading-indicator[aria-busy="true"]::after {
+    content: "Loading...";
+    position: absolute;
+    left: -10000px;
+}
+
+/* Ensure form labels are associated */
+label {
+    cursor: pointer;
+}
+
+input:focus + label,
+input:focus-within + label {
+    font-weight: 600;
+}
+
+/* Error states */
+[aria-invalid="true"] {
+    border-color: var(--rz-danger) !important;
+}
+
+[aria-invalid="true"]:focus {
+    outline-color: var(--rz-danger) !important;
+}
+
+/* Required field indicator */
+[aria-required="true"]::after,
+.required::after {
+    content: "*";
+    color: var(--rz-danger);
+    margin-left: 0.25rem;
+}
+
+/* Disabled state */
+[aria-disabled="true"],
+:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Tooltip accessibility */
+[role="tooltip"] {
+    position: absolute;
+    background: var(--rz-base-900);
+    color: white;
+    padding: 0.5rem;
+    border-radius: 4px;
+    font-size: 0.875rem;
+    z-index: 1000;
+}
+
+/* Table accessibility */
+th[scope] {
+    font-weight: 600;
+}
+
+caption {
+    padding: 0.5rem;
+    font-weight: 600;
+    text-align: left;
+}
+
+/* Link underlining for accessibility */
+a:not(.rz-button) {
+    text-decoration: underline;
+    text-decoration-skip-ink: auto;
+}
+
+a:not(.rz-button):hover {
+    text-decoration-thickness: 2px;
+}
+
+/* Print styles for accessibility */
+@media print {
+    .no-print {
+        display: none !important;
+    }
+
+    a[href]::after {
+        content: " (" attr(href) ")";
+    }
+}
